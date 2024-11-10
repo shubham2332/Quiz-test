@@ -202,6 +202,7 @@ function movetonextquestion(){
 
         resultsection.style.display = 'block';
         quizgame.style.display = 'none';
+        resultsectionh1.textContent = `your marks are ${marks} / ${questions.length}`;
 
     }
     
@@ -213,9 +214,19 @@ restartbtn.addEventListener('click' , restartquiz);
 function restartquiz(){
     marks = 0;
     questionIndex = 0;
-    initializeQuiz();
+    
     resultsection.style.display = 'none';
     quizgame.style.display='block';
+    initializeQuiz();
+}
+document.addEventListener('keydown' , handlekeypress);
+
+function handlekeypress(event){
+    let keypressed = event.key;
+    let optionindex = parseInt(keypressed)-1;
+    if(optionindex >=0 && optionindex < optionArea.length){
+        optionArea[optionindex].click();
+    }
 }
 
 
