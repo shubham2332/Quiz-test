@@ -176,6 +176,12 @@ function disabledOptions(){
         optionArea[i].disabled = true
     }
 }
+let quizgame = document.querySelector('.quiztest');
+
+let resultsection = document.querySelector('.result-section');
+let resultsectionh1= document.querySelector('.result-section h1');
+
+
 
 
 let nxtbtn = document.getElementById('nxt-btn');
@@ -187,9 +193,30 @@ function movetonextquestion(){
         optionArea[i].style.backgroundColor=""
         optionArea[i].style.color=""
     }
-    initializeQuiz();
+    if(questionIndex<questions.length){
+        initializeQuiz();   
+    }
+    else{
+        console.log(optionArea.length)
+        alert(' Quiz complete')
+
+        resultsection.style.display = 'block';
+        quizgame.style.display = 'none';
+
+    }
+    
 }
 
+let restartbtn = document.getElementById('restart');
+restartbtn.addEventListener('click' , restartquiz);
+
+function restartquiz(){
+    marks = 0;
+    questionIndex = 0;
+    initializeQuiz();
+    resultsection.style.display = 'none';
+    quizgame.style.display='block';
+}
 
 
 
